@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% from 'appointment/common.html' import detail %}
+
+{% block title %}Appointments{% endblock title %}
+
+{% block main %}
+<div class="row">
+  {% for appt in appts %}
+    <div class="span12">
+    {{ detail(appt,
+      link_title=true,
+      show_edit=false,
+      show_description=false) }}
+         <div class="form-actions">
+            <button type="submit" class="btn"><a href={{ url_for('appointment_create')}}>Ajouter un rendez-vous</rend></appoint></a></button>
+            or <a href="{{ url_for('appointment_list') }}">Cancel</a>
+         </div>
+    </div>
+  {% else %}
+    <h3 class="span12">No appointments.</h3>
+  {% endfor %}
+</div>
+
+{% endblock main %}
